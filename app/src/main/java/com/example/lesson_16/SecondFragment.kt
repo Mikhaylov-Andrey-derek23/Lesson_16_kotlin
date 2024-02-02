@@ -8,39 +8,32 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.lesson_16.databinding.FragmentSecondBinding
+
 
 
 class SecondFragment : Fragment() {
-    private var btnNavigateToFirstFragment: Button? = null
-    private var btnNavigateToThirdFragment: Button? = null
-    private  var tvFragmentText: TextView? = null
+    private  var binding: FragmentSecondBinding? = null
     private  var valueText:String? = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_second, container, false)
+        binding = FragmentSecondBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        btnNavigateToFirstFragment = requireActivity().findViewById(R.id.btnNavigateToFirstFragment)
-        btnNavigateToThirdFragment = requireActivity().findViewById(R.id.btnNavigateToThirdFragment)
-        tvFragmentText = requireActivity().findViewById(R.id.tvText)
+
         valueText = arguments?.getString("TEXT_EXTRA", "")
-        tvFragmentText?.text = valueText
+        binding?.tvText?.text = valueText
         setOnClickListeners()
 
     }
     private  fun setOnClickListeners(){
-//        btnNavigateToFirstFragment?.setOnClickListener {
-//
-//
-//            requireActivity().supportFragmentManager.beginTransaction()
-//                .replace(R.id.fragmentContainer, FirstFragment())
-//                .commit()
-//        }
-        btnNavigateToThirdFragment?.setOnClickListener {
+
+        binding?.btnNavigateToThirdFragment?.setOnClickListener {
             var bundle = Bundle()
             bundle.putString("TEXT_EXTRA", valueText)
             val fragment = ThirdFragment()
