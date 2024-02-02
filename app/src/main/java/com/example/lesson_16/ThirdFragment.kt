@@ -35,8 +35,13 @@ class ThirdFragment : Fragment() {
                 .commit()
         }
         binding?.btnNavigateToSecondFragment?.setOnClickListener {
+            val text = arguments?.getString("TEXT_EXTRA").toString()
+            val bundle = Bundle()
+            bundle.putString("TEXT_EXTRA", text)
+            val fragment = SecondFragment()
+            fragment.arguments = bundle
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, SecondFragment())
+                .replace(R.id.fragmentContainer, fragment)
                 .commit()
         }
     }

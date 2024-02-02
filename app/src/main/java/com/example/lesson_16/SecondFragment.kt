@@ -33,13 +33,13 @@ class SecondFragment : Fragment() {
 
     }
     private  fun setOnClickListeners(){
-        btnNavigateToFirstFragment?.setOnClickListener {
-
-
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, FirstFragment())
-                .commit()
-        }
+//        btnNavigateToFirstFragment?.setOnClickListener {
+//
+//
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragmentContainer, FirstFragment())
+//                .commit()
+//        }
         btnNavigateToThirdFragment?.setOnClickListener {
             var bundle = Bundle()
             bundle.putString("TEXT_EXTRA", valueText)
